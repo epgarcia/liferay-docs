@@ -48,30 +48,69 @@ following topics:
 
 By the time we're done, you should be able to apply all these concepts to your
 own content. To demonstrate Liferay's Web Content Management features, we'll
-create and manage content on the portal for *Nose-ster*, a new social network
-where people are connected based on what their noses look like. Once you're
-familiar with Liferay WCM, you'll wonder how you ever got along without it. 
+create and manage content on the portal for the ambitious (and fictitious)
+*Lunar Resort* project. The Lunar Resort project specializes in facilitating
+lunar vacations. It provides space shuttle transportation from the Earth to Moon
+and back, offers the use of a state-of-the-art recreational facility enclosed by
+a large, transparent habitat dome, and even rents out lunar rovers. Once you're
+familiar with Liferay WCM, you'll wonder how the Lunar resort's portal could
+ever manage without it! 
 
-## Setting up the Nose-ster Example Portal [](id=setting-up-the-nose-ster-example-portal-liferay-portal-6-2-user-guide-02-en)
+## Touring Liferay Portal's User Interface [](id=touring-liferay-portals-user-interface-liferay-portal-6-2-user-guide-02-en)
+
+Liferay Portal's user interface is designed to be simple and intuitive. Across
+the top is what's known as the *Dockbar*, a series of links that appear based on
+the permissions of the logged-in user. There are four sections in the Dockbar:
+*Admin*, *My Sites*, *Notifications*, and the *User* section. 
+
+The Admin section gives you access to Liferay Portal's Site Administration
+interface, as well as to the Control Panel. Both of these are explained in more
+detail later in this book. Site administration in particular can be done
+directly on the page as well, as will be described. 
+
+![Figure 2.1: The Dockbar provides convenient access to Liferay Portal's functions.](../../images/dockbar.png)
+
+
+The My Sites section provides a list of the sites which the logged-in user can
+access. These appear as a drop down list. Next are Notifications. The
+Notifications icon shows the unread notifications you have. You are
+notified upon receiving a private message, an invitation to join a site, a
+social connection request, or an event reminder. Alerts and announcements
+created via the Alerts or Announcements applications are accessible via the
+Notifications icon.
+
+Finally, the user section shows the users name and provides links to the user's
+profile (his or her publicly-accessible pages), dashboard (his or her private
+pages), account settings, and a sign out link. 
+
+On the left side of the page are three icons: one for add, one for previews, and
+one to show or hide the edit controls if you have administrative access to the
+page. All of these are explained later in this chapter. 
+
+Anything else you see on the page is provided by the theme that is installed.
+This includes site navigation and application windows, called *portlets*. Let's
+jump in and start creating the site we'll use for this book. 
+
+## Setting up the Lunar Resort Example Portal [](id=setting-up-the-lunar-resort-example-por-liferay-portal-6-2-user-guide-02-en)
 
 Suppose that you've been assigned the task of building a web site for an
-innovative new social networking site called Nose-ster. You've decided to take
+innovative new company called Lunar Resort, Inc. You've decided to take
 advantage of Liferay Portal and its rapid deployment features as well as its
 ability to get a fully functional, content-rich web site with integrated social
 features up and running in little time. We can get you started. We'll walk you
-through the creation of Nose-ster's web site, starting by creating and
+through the creation of the Lunar Resort's web site, starting by creating and
 publishing some simple content using Liferay's built-in WYSIWYG editor. In the
 next chapter, we'll take advantage of Liferay's robust structure editor. Then
 we'll use templates to display the content and then explore some of the advanced
 publishing features such as the built-in workflow and Asset Publisher.
 
-First, a little housekeeping. If we're going to be *Nose-ster*, our portal
-should also be called Nose-ster. To set general information about your portal
-like the name and mail domain, go to the Control Panel and select *Portal
+First, a little housekeeping. If we're going to be the Lunar Resort, our portal
+should also be called *Lunar Resort*. To set general information about your
+portal like the name and mail domain, go to the Control Panel and select *Portal
 Settings* under the Configuration heading. You could set up the configuration
-for Nose-ster as follows.
+for the Lunar Resort as follows.
 
-![Figure 2.1: You can change the portal settings by navigating to the Control Panel and selecting *Portal Settings*.](../../images/04-web-content-changing-settings.png)
+![Figure 2.2: You can change the portal settings by navigating to the Control Panel and selecting *Portal Settings*.](../../images/04-web-content-changing-settings.png)
 
 You can also customize the logo in the top left corner of every page by
 selecting *Display Settings* under the *Miscellaneous* tab on the panel to the
@@ -126,8 +165,8 @@ organizations. The difference between sites and organizations, of course, is
 that sites are used to organize pages, content, application data, and users (via
 site memberships) whereas organizations are only used to group users. Content
 sharing is available for sites within the same hierarchy. For instance, if a
-parent site has a document called *Nose Goals and Objectives* and would like for
-all its subsites to have a copy, the parent site's administrator can enable
+parent site has a document called *Lunar Goals and Objectives* and would like
+for all its subsites to have a copy, the parent site's administrator can enable
 content sharing to automatically share the document with its subsites, instead
 of having to send each site the document individually. Also, content sharing
 privileges can be set to let every site administrator share content across sites
@@ -151,7 +190,7 @@ can be organized hierarchically, so can the pages within a site. The display
 depth of the Site Map portlet determines how many levels of nested pages to
 display.
 
-![Figure 2.2: The Site Directory portlet can allow users to navigate between sites organized hierarchically. The Site Map portlet can allow users to navigate among pages of site organized hierarchically.](../../images/site-directory-site-map.png)
+![Figure 2.3: The Site Directory portlet can allow users to navigate between sites organized hierarchically. The Site Map portlet can allow users to navigate among pages of site organized hierarchically.](../../images/site-directory-site-map.png)
 
 Liferay's sites have two categories of pages called page sets. There are two
 kinds of page sets: public pages and private pages. A site can have only public
@@ -233,7 +272,7 @@ templates are created, they will appear in the Add menu as they become
 available. The following figure shows the form that needs to be filled when
 creating a *Blank Site*.
 
-![Figure 2.3: The New Site window aids in your new site development.](../../images/01-add-site-screen.png)
+![Figure 2.4: The New Site window aids in your new site development.](../../images/01-add-site-screen.png)
 
 **Name:** is the name of the site you wish to create.
 
@@ -282,8 +321,8 @@ creating site membership policies. -JR -->
 
 **Directory Indexing Enabled:** allows site administrators to browse the site's
 documents and media files and folders. For example, a site administrator of a
-site called Nose-ster could can browse documents at
-[http://localhost:8080/documents/nose-ster](http://localhost:8080/documents/nose-ster) if this option is enabled.
+site called *Lunar Resort* can browse documents at
+[http://localhost:8080/documents/lunar-resort](http://localhost:8080/documents/lunar-resort) if this option is enabled.
 
 **Parent Site:** lets you select a parent site for the site that's being
 created. As of Liferay 6.2, sites can be organized hierarchically. Using
@@ -327,7 +366,7 @@ you're on the Site Administration page, select *Site Pages* (if necessary) under
 the Pages tab from the left panel. You can also use the *Pages* shortcut which
 is also listed under the Admin tab.
 
-![Figure 2.4: The *Site Pages* interface allows you to edit your site pages as a whole.](../../images/04-managing-site-pages.png)
+![Figure 2.5: The *Site Pages* interface allows you to edit your site pages as a whole.](../../images/04-managing-site-pages.png)
 
 To add new pages to your site, click the *Add* icon from the left palette and
 select the *Page* tab. This is the *Page* interface, which offers a plethora of
@@ -337,7 +376,7 @@ To manage the specific page of the site you've navigated to, click the *Edit*
 icon from the left palette. This will only edit the specific page you're
 currently on.
 
-![Figure 2.5: The *Edit Page* interface allows you to edit the current page you're on.](../../images/04-web-content-managing-single-page.png)
+![Figure 2.6: The *Edit Page* interface allows you to edit the current page you're on.](../../images/04-web-content-managing-single-page.png)
 
 *Site Pages* is an interface to view existing pages, create new pages, view
 pages and export or import pages using Liferay Archive (LAR) files. Note that
@@ -345,8 +384,8 @@ you can switch between managing a set of pages and managing a single page using
 the left-hand side navigation menu. Click on *Public Pages* or *Private Pages*
 to manage the group or click on an individual page to manage just that one.
 Switching views like this changes the list of available tabs to the right. By
-default, liferay.com, which we renamed to nosester.com, contains a single public
-page called *Welcome*.
+default, liferay.com, which we renamed to lunar-resort.com, contains a single
+public page called *Welcome*.
 
 Liferay's page groups are always associated with sites. Even users' personal
 pages are part of their personal sites. All pages belong to one of two types of
@@ -371,7 +410,7 @@ and drop them in the list to put them in whatever order you want. Let's go ahead
 and add another top level page and name it *Community*. We'll use this page for
 the Recent Bloggers and Wiki portlets.
 
-![Figure 2.6: You can add a page to your site by giving it a name, page template, and page type.](../../images/04-web-content-add-page.png)
+![Figure 2.7: You can add a page to your site by giving it a name, page template, and page type.](../../images/04-web-content-add-page.png)
 
 When you create a new page, you can create either a blank page or a page
 prepopulated with portlets from a page template. When you're entering the name
@@ -474,8 +513,8 @@ category name collision, Liferay renames the imported categories.
 ---
 
 Let's be good administrators and export a LAR file for backup purposes. Click on
-the *Export* button and then name the file `nosesterv1.lar`. Use the check boxes
-to determine what you'd like to export. For this initial export, select
+the *Export* button and then name the file `lunarresortv1.lar`. Use the check
+boxes to determine what you'd like to export. For this initial export, select
 everything. Note that if you select one of the *Choose* radio selectors or
 *Change* links, you're given checkboxes for options to choose. The applications'
 content can also be selected for export, including the Documents and Media
@@ -501,7 +540,7 @@ of the portal. They are created by developers and are easily installed using the
 Liferay Marketplace. Since we don't have any themes beyond the default one
 installed yet, we'll use the default theme for our pages.
 
-![Figure 2.7: The Look and Feel interface allows you to choose a theme for the current site.](../../images/04-look-and-feel.png)
+![Figure 2.8: The Look and Feel interface allows you to choose a theme for the current site.](../../images/04-look-and-feel.png)
 
 Many themes include more than one color scheme. This allows you to keep the
 existing look and feel while giving your site a different flavor. Change the
@@ -642,12 +681,13 @@ tabs of the Manage Site Settings dialog box (see below).
  possible that a single page could be indexed multiple times. In Liferay 6.1,
  all URLs that direct to the same page will only create one entry in the index.
  Previously, the simple URL
- *http://www.nosester.com/web/guest/blog/-/blogs/thenose* and different versions
- of the URL which provided additional information about the referring page had
- different entries in the index. As of Liferay 6.1, each asset (web content
- article, blog entry, etc.) has a unique URL. From the search engine's point of
- view, this will make your pages rank higher since any references to variations
- of a specific URL will all be considered references to the same page.] 
+ *http://www.lunar-resort.com/web/guest/blog/-/blogs/themoon* and different
+ versions of the URL which provided additional information about the referring
+ page had different entries in the index. As of Liferay 6.1, each asset (web
+ content article, blog entry, etc.) has a unique URL. From the search engine's
+ point of view, this will make your pages rank higher since any references to
+ variations of a specific URL will all be considered references to the same
+ page.] 
 
 ---
 
@@ -720,7 +760,7 @@ are, of course, more complicated layouts available and you can play around with
 them to get the layout you want.
 
 Sometimes a particular layout is *almost* what you want but not quite. In this
-case use the Nested Portlets portlet to embed a layout inside another layout.
+case, use the Nested Portlets portlet to embed a layout inside another layout.
 This portlet is a container for other portlets. It lets you select from any of
 the layouts installed in Liferay, just like the layouts for a page. This gives
 you virtually unlimited options for laying out your pages.
@@ -737,7 +777,7 @@ on any page. When users customize a page, they have the option to use either
 their version or the default version of a page. Users can't see alternate
 versions of pages other than their own.
 
-![Figure 2.8: During page customization, individual columns change colors to indicate whether they are selected or not.](../../images/04-web-content-personal-customization.png)
+![Figure 2.9: During page customization, individual columns change colors to indicate whether they are selected or not.](../../images/04-web-content-personal-customization.png)
 
 To activate page customizations, click the *Edit Page* button from the left
 palette and select the *Customization Settings* tab. Then select *Show
@@ -762,7 +802,7 @@ Administration and clicking *Site Settings* from the Configuration section on
 the left panel. You can also select the Site Administration sub-tab
 *Configuration* from the *Admin* drop-down.
 
-![Figure 2.9: The Site Settings window offers a plethora of options for your site.](../../images/web-content-site-settings.png)
+![Figure 2.10: The Site Settings window offers a plethora of options for your site.](../../images/web-content-site-settings.png)
 
 You'll find options to specify details and metadata about your site, set up
 friendly URLs and virtual hosts, configure search engine optimization settings,
@@ -810,15 +850,15 @@ www.mycompany.com) for your site. This can be a full domain or a subdomain. This
 enables you to host a number of web sites as separate sites on one Liferay
 server.
 
-For instance, if we set this up for Nose-ster's Development Network, users in
-that site could use developers.nosester.com to get to their site, provided
-Nose-ster's network administrators created the domain name and pointed it to the
-Liferay server.
+For instance, if we set this up for the Lunar Resort's development network,
+users in that site could use *developers.lunar-resort.com* to get to their site,
+provided that the Lunar Resort portal's network administrators created the
+domain name and pointed it to the Liferay server.
 
-To set this up, the DNS name *developers.nosester.com* should point to your
-portal's IP address first. Then enter *http://developers.nosester.com* in the
-Virtual Host tab for the Developers site. This helps users quickly access their
-site without having to recall an extended URL.
+To set this up, the DNS name *developers.lunar-resort.com* should point to your
+portal's IP address first. Then enter *http://developers.lunar-resort.com* in
+the Virtual Host tab for the Developers site. This helps users quickly access
+their site without having to recall an extended URL.
 
 **Site Template:** If you've created the site from a site template, this section
 displays information about the link between the site template and the site.
@@ -920,7 +960,7 @@ it on the *Admin* &rarr; *Site Administration* page. From Site Administration,
 you'll notice the Content heading where all your portal's content can be
 managed, including web content. 
 
-![Figure 2.10: Your site's content resides on the Site Administration page.](../../images/web-content-site-content.png)
+![Figure 2.11: Your site's content resides on the Site Administration page.](../../images/web-content-site-content.png)
 
 For details about Liferay's social collaboration suite, see chapter 10.
 
@@ -940,8 +980,8 @@ Next, let's learn more details about creating pages.
 ### Creating Pages [](id=creating-pages-liferay-portal-6-2-user-guide-02-en)
 
 There are a lot of other things you can do beyond placing portlets on a page. So
-let's start working on the Nose-ster site. You can do this by going up to the
-Dockbar and clicking *My Sites* &rarr; *Nose-ster*.
+let's start working on the Lunar Resort site. You can do this by going up to the
+Dockbar and clicking *My Sites* &rarr; *Lunar Resort*.
 
 We'll use the *Community* page you created earlier in the chapter. Navigate to
 the *Community* page and select the *Add* button from the left palette and then
@@ -991,7 +1031,7 @@ for portlets by name. Once you've found a portlet, click the *Add* button to add
 it the current page. Once it's been added to the page, you can drag it to a new
 position. Alternatively, you can drag the portlet directly from the Applications
 menu to a specific location on the page. Let's add some portlets to the
-Collaboration page of the Nose-ster site.
+Collaboration page of the Lunar Resort site.
 
 1. From the left palette, select *Add* &rarr; *Applications*.
 2. In the menu that appears, expand the *Collaboration* category.
@@ -1002,12 +1042,13 @@ Collaboration page of the Nose-ster site.
 See how easy it is to add applications to your pages? We've added the Wiki
 portlet and Blogs Aggregator portlet to the Community page. 
 
-![Figure 2.11: Yeah, we're showoffs. But as you can see, your page layout options are virtually limitless.](../../images/04-web-content-portlet-layout.png)
+![Figure 2.12: Yeah, we're showoffs. But as you can see, your page layout options are virtually limitless.](../../images/04-web-content-portlet-layout.png)
 
-You'll find it's easy to make your pages look exactly the way you want them to.
-If the layout options provided aren't enough, you can even develop your own.
-More information about that can be found in Liferay's official guide to
-development, [*Liferay in Action*](http://manning.com/sezov).
+It's easy to make your pages look exactly the way you want them to. If the
+default layout options provided aren't enough, you can even develop your own.
+To find more information about developing custom layout templates, please refer
+to the Liferay Developer's guide:
+[https://www.liferay.com/documentation/liferay-portal/6.2/development](https://www.liferay.com/documentation/liferay-portal/6.2/development).
 
 #### Page Permissions [](id=page-permissions-liferay-portal-6-2-user-guide-02-en)
 
@@ -1031,7 +1072,7 @@ this with the following procedure:
    role.
 7. Click the *Save* button.
 
-![Figure 2.12: The Permissions offer a plethora of options for each role.](../../images/04-web-content-page-permissions.png)
+![Figure 2.13: The Permissions offer a plethora of options for each role.](../../images/04-web-content-page-permissions.png)
 
 Congratulations! You've just changed the permissions for this page so only site
 administrators can view it. Any users you add to this role can now see the page.
@@ -1114,11 +1155,11 @@ away or take advantage of the more advanced features. It's adaptable to your
 needs.
 
 We'll begin by creating some simple content using Liferay's WYSIWYG editor. Then
-we'll publish it to the home page of Nose-ster's web site. This is a fast and
-straightforward process that demonstrates how easy it is to create and publish
-content on your Liferay Portal instance. Let's learn about the Web Content
-section in Site Administration so we can create and publish our first pieces of
-content.
+we'll publish it to the home page of the Lunar Resort's web site. This is a fast
+and straightforward process that demonstrates how easy it is to create and
+publish content on your Liferay Portal instance. Let's learn about the Web
+Content section in Site Administration so we can create and publish our first
+pieces of content.
 
 When you manage web content from the Site Administration page, you can select
 the location where the content resides. For instance, you can add content that's
@@ -1129,17 +1170,17 @@ sites or would like to add content globally, navigate to the Control Panel and
 select *Sites*. From this window, you can change the scope of where you'd like
 to view, edit, or create content.
 
-![Figure 2.13: You can choose where to create content by navigating to the Control Panel and selecting *Sites*.](../../images/sites-selector.png)
+![Figure 2.14: You can choose where to create content by navigating to the Control Panel and selecting *Sites*.](../../images/sites-selector.png)
 
-Once you have the Nose-ster site selected, click on the *Web Content* link in
+Once you have the Lunar Resort site selected, click on the *Web Content* link in
 Site Administration. You'll see a folder structure containing all of the web
-content articles that exist in the currently selected scope (the Nose-ster
+content articles that exist in the currently selected scope (the Lunar Resort
 site). You can click *Add* &rarr; *Folder* to create a new folder. For sites
 with lots of content and web content articles, it can be very useful to use
 folders to group certain kinds of web content articles together. Click *Add*
 &rarr; *Basic Web Content* to create a new web content article.
 
-![Figure 2.14: Click *Add* &rarr; *Basic Web Content* to create a new simple web content article. To create a new web content article based on an existing web content structure, click *Add* and then click on the name of the structure you'd like to use.](../../images/web-content-add-menu.png)
+![Figure 2.15: Click *Add* &rarr; *Basic Web Content* to create a new simple web content article. To create a new web content article based on an existing web content structure, click *Add* and then click on the name of the structure you'd like to use.](../../images/web-content-add-menu.png)
 
 Existing web content structures also appear in the *Add* menu. This provides
 users with shortcuts for creating specific kinds of web content articles. For
@@ -1166,26 +1207,27 @@ your new web content article by clicking *Select* next to the *Structure*
 heading. We discuss web content structures and templates in detail in the next
 chapter.
 
-Type the words *Welcome to Nose-ster* in the *Name* field. Notice that content
-can be localized in whatever language you want. If you click on the *localize*
-checkbox, two select boxes appear which allow you to pick the language you're
-working in and the default language. You can enter translations of your content
-for any language in the list. The figure below shows this interface but for now,
-we won't be using it, so you can leave it unchecked. In the content field, add a
-short sentence announcing the web site is up and running.
+Type the words *Welcome to the Lunar Resort* in the *Name* field. Notice that
+content can be localized in whatever language you want. If you click on the
+*localize* checkbox, two select boxes appear which allow you to pick the
+language you're working in and the default language. You can enter translations
+of your content for any language in the list. The figure below shows this
+interface but for now, we won't be using it, so you can leave it unchecked. In
+the content field, add a short sentence announcing the web site is up and
+running.
 
 Getting a new web site up and running is an exciting step for anyone, whether it
 is a large corporation or a small non-profit charity. To celebrate this
-momentous achievement at Nose-ster, let's give our announcement some of the pomp
-and circumstance we think it deserves!
+momentous achievement at the Lunar Resort, let's give our announcement some of
+the pomp and circumstance we think it deserves!
 
 Using the editor, select all the text and then change the style to *Heading 1*
-and the color to *Dark Green*. You could insert an image here or even more text
-with a different style, as demonstrated in the screenshot below. You can also
-add bullets, numbering, links to another site or custom images. You can even add
-an emoticon. Go ahead and add a smiley face to the end of your announcement.
+and the color to *Navy*. You could insert an image here or even more text with a
+different style, as demonstrated in the screenshot below. You can also add
+bullets, numbering, links to another site or custom images. You can even add an
+emoticon. Go ahead and add a smiley face to the end of your announcement.
 
-![Figure 2.15: View your content changes directly in the editor.](../../images/04-web-content-example2.png)
+![Figure 2.16: View your content changes directly in the editor.](../../images/04-web-content-example2.png)
 
 The WYSIWYG editor is a flexible tool that gives you the ability to add text,
 images, tables, links and more. Additionally, you can modify the display to
@@ -1198,7 +1240,7 @@ switch from the WYSIWYG view by clicking the *Source* button. From the Source
 view, you can view the HTML content of your web content. If you wish, can edit
 the HTML directly.
 
-![Figure 2.16: If you've installed and enabled Xuggler from the *Server Administration* &rarr; *External Tools* section of the Control Panel, you can add audio and video to your web content!](../../images/web-content-video.png)
+![Figure 2.17: If you've installed and enabled Xuggler from the *Server Administration* &rarr; *External Tools* section of the Control Panel, you can add audio and video to your web content!](../../images/web-content-video.png)
 
 You can integrate Liferay with external services to enable additional
 functionality. For example, if you navigate to the Control Panel, click on
@@ -1222,7 +1264,7 @@ listen the embedded multimedia!
 The right side of the New Web Content form provides options for customizing your
 web content.
 
-![Figure 2.17: New web content can be customized in various ways using the menu on the right.](../../images/wcm-menu.png)
+![Figure 2.18: New web content can be customized in various ways using the menu on the right.](../../images/wcm-menu.png)
 
 **Abstract:** lets you to create a brief summary of the web content. You can
 also pair the text with a small image.
@@ -1279,7 +1321,7 @@ you'll be redirected to the Default Display Page of the article.
 
 You now see that the link looks something like this:
 
-    www.nosester.com/nose-article
+    www.lunar-resort.com/lunar-article
 
 This is an example of a canonical URL, and it's a nice enhancement for Search
 Engine Optimization (SEO) because the article's URL becomes the page URL. To a
@@ -1295,7 +1337,7 @@ category. You can connect your content to a Blogs Entry, Message Boards Message,
 Web Content, Calendar Event, Bookmarks Entry, Documents and Media Document, and
 a Wiki Page.
 
-![Figure 2.18: This blog entry has links to three Related Assets: one web content and two message board entries.](../../images/related-assets-link.png)
+![Figure 2.19: This blog entry has links to three Related Assets: one web content and two message board entries.](../../images/related-assets-link.png)
 
 You'll learn how to publish links to related assets using the Related Assets
 portlet in the *Defining content relationships* section of chapter 5.
@@ -1327,11 +1369,11 @@ it works.
 ### Publishing (Basic) Content [](id=publishing-basic-content-liferay-portal-6-2-user-guide-02-en)
 
 Now that we've created and published our first piece of web content for
-Nose-ster, it's time to display it. First, add the *Web Content Display* portlet
-to our Welcome page by selecting the *Add* button from the left palette and
-selecting the *Applications* tab.
+the Lunar Resort, it's time to display it. First, add the *Web Content Display*
+portlet to our Welcome page by selecting the *Add* button from the left palette
+and selecting the *Applications* tab.
 
-![Figure 2.19: Adding the Web Content Display Portlet](../../images/add-web-content-display.png)
+![Figure 2.20: Adding the Web Content Display Portlet](../../images/add-web-content-display.png)
 
 Once the portlet appears, drag it to the position on the page where you want
 your content to appear. You can have as many Web Content Display portlets on a
@@ -1349,7 +1391,7 @@ all the options). You can also show the available locales for your content. If
 you're working on the page for a particular language, you can select the
 translation of your content that goes with your locale.
 
-![Figure 2.20: Publishing web content is a snap. At a minimum, you only have to select the content you wish to publish. You can also enable lots of optional features to let your users interact with your content.](../../images/04-web-content-choosing-web-content.png)
+![Figure 2.21: Publishing web content is a snap. At a minimum, you only have to select the content you wish to publish. You can also enable lots of optional features to let your users interact with your content.](../../images/04-web-content-choosing-web-content.png)
 
 If you have enabled OpenOffice.org integration with your portal, you can also
 enable document conversion for your content. This gives your users the ability
@@ -1406,7 +1448,7 @@ Content Display portlet, select the *Edit* button to the lower left of the
 portlet. This launches the WYSIWYG editor and from there you can make any
 necessary changes.
 
-![Figure 2.21: The *Edit*, *Select Web Content*, and *Add* buttons appear when hovering over their icons.](../../images/web-content-display-icons.png)
+![Figure 2.22: The *Edit*, *Select Web Content*, and *Add* buttons appear when hovering over their icons.](../../images/web-content-display-icons.png)
 
 When you publish updates to a web content that's already being displayed
 somewhere on your portal (e.g., in a Web Content Display portlet or an Asset
@@ -1461,15 +1503,15 @@ To enable workflow for Web Content, navigate to the Control Panel and select
 *Workflow Configuration*. From there, select a workflow that has been deployed
 to Liferay.
 
-![Figure 2.22: You can select the pre-made *Single Approver* workflow to experiment with workflow management.](../../images/04-web-content-workflow-config.png)
+![Figure 2.23: You can select the pre-made *Single Approver* workflow to experiment with workflow management.](../../images/04-web-content-workflow-config.png)
 
 As you'll discover in chapter 10, you can design workflows to suit your
-organization's approval process. For Nose-ster's implementation we'll use the
-*Single Approver* workflow which ships with the product.
+organization's approval process. For the Lunar Resort's implementation we'll use
+the *Single Approver* workflow which ships with the product.
 
 #### Defining Workflows for Web Content [](id=defining-workflows-for-web-content-liferay-portal-6-2-user-guide-02-en)
 
-Let's set up Liferay's Workflow for the Nose-ster web site. You must have the
+Let's set up Liferay's Workflow for the Lunar Resort web site. You must have the
 Kaleo workflow plugin installed in order for the workflow categories to appear
 in the Control Panel. Liferay's Kaleo workflow engine ships with CE versions of
 Liferay. For installation instructions for Liferay EE, please see chapter 10.
@@ -1482,11 +1524,11 @@ Note that you can add workflow to many of Liferay's portlets.
 
 That's all it takes to set up workflow for web content. Now that workflow is
 enabled, publishing content works a little bit differently. Let's go through the
-process of publishing details for new class offerings at Nose-ster. Return to
-the home page and click the *Add Web Content* icon on the Web Content Display
-portlet. Call the new content *Course Offerings* and enter some content. Notice
-that the Publish button is now gone. In its place is a *Submit for Publication*
-button. Go ahead and click it.
+process of publishing details for new class offerings at the Lunar Resort.
+Return to the home page and click the *Add Web Content* icon on the Web Content
+Display portlet. Call the new content *Course Offerings* and enter some content.
+Notice that the Publish button is now gone. In its place is a *Submit for
+Publication* button. Go ahead and click it.
 
 Next, go to the *Workflow Tasks* in Site Administration and select *My Workflow
 Tasks*. You will see the option to Review Content for Sales Goals. It shows

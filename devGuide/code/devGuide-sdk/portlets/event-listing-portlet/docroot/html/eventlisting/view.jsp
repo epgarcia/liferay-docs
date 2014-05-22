@@ -1,9 +1,7 @@
 
-<%@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %>
+<%@ include file="/html/init.jsp" %>
 
-<%@include file="/html/init.jsp" %>
-
-This is the <b>Event Listing Portlet</b> portlet in View mode.
+This is the <b>Event Listing Portlet</b> in View mode.
 
 <%
 	String redirect = PortalUtil.getCurrentURL(renderRequest);

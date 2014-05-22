@@ -181,6 +181,82 @@ them.
 
 Once you have your database ready, you can install Liferay on your server. 
 
+## Liferay Marketplace [](id=liferay-marketplace-liferay-portal-6-2-user-guide-15-en)
+
+The Liferay Marketplace is an integral part of the Liferay Portal experience.
+Starting with Liferay Portal 6.2, the Marketplace plugin is required to be
+installed alongside Liferay Portal. The Marketplace plugin enables a host of
+features that extend beyond just access to the online Liferay Marketplace. Some
+of the key features the Marketplace plugin enables are:
+
+- Liferay Marketplace:  direct access to our online Marketplace
+- App Manager: ability to install, uninstall, and update apps
+- Bundled Apps: easily manage apps that may come bundled with your Liferay
+  Portal 
+- Developer Apps: ability to manage apps that you’re developing
+- License Manager: streamlined license management for your Liferay Portal and
+  apps
+
+The portal installation process attempts to deploy and register the Marketplace
+plugin automatically. If your environment supports/allows 1) hot deploy and 2)
+full database rights, the automatic deploy process takes care of itself.
+Many companies (especially in a production environment), however, limit
+automated processes and/or database access. Additionally, certain application
+servers (eg., WebSphere) do not support hot deploy, so you may need to 
+deploy the Marketplace plugin manually. Depending on your environment’s
+restrictions, you may need to follow one or more of the steps below to 
+install the Marketplace plugin properly. 
+
+### Server is Firewalled without Access to the Internet [](id=server-is-firewalled-without-access-to--liferay-portal-6-2-user-guide-15-en)
+
+Your server may be behind a firewall that prevents access to the Internet, or
+your security policy may not allow direct download and installation from the
+Internet. In these cases, you have 2 options:
+
+1. From an Internet-enabled computer, download the Marketplace plugin from
+[here](https://www.liferay.com/marketplace/download).
+Then allow Liferay to auto deploy it by dropping the downloaded .lpkg file into
+the Liferay deploy folder. 
+
+2. From an Internet-enabled computer, download the Marketplace plugin. Then use
+the Liferay App Manager to deploy the plugin.
+
+Detailed instructions can be found under [Installing Plugins Manually](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/plugin-management-liferay-portal-6-2-user-guide-14-en). 
+
+### Application Server Does Not Support Hot Deploy [](id=application-server-does-not-support-hot-liferay-portal-6-2-user-guide-15-en)
+
+If your application server does not support hot deploy, you can't leverage
+Liferay’s auto deploy feature. You can, however, manually deploy the
+plugin in two steps:
+
+1. Use Liferay’s tools to “pre-deploy” the file.
+
+2. Then use your app server's tools to do the actual deployment.
+
+This is because Liferay makes deployment-time modifications to the plugins right
+before they are actually deployed to the application server. Detailed
+instructions can be found under [Deploy Issues for Specific Containers](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/plugin-management-liferay-portal-6-2-user-guide-14-en). 
+
+### Limited Database Access [](id=limited-database-access-liferay-portal-6-2-user-guide-15-en)
+
+Some production environments do not have the necessary database permissions for
+Liferay and its plugins to maintain their tables. In these cases:
+
+1. Grant the ID Liferay uses to access the database temporary full rights to the
+   database. 
+
+2. Install Liferay and have it create the database. 
+
+3. Once the database is created, remove the permissions for creating tables and
+   dropping tables from the user ID.
+
+Detailed instructions are available
+[here](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/liferays-database-liferay-portal-6-2-user-guide-15-en).
+It should be noted that most sophisticated Liferay apps--not just the
+Marketplace plugin--require new tables when deployed. If your environment
+restricts database access, you may need to repeat the above steps whenever you
+deploy a new app to the Liferay Portal.
+
 ## Liferay Home [](id=liferay-home-liferay-portal-6-2-user-guide-15-en)
 
 Liferay Portal uses a special folder defined as *Liferay Home*. This folder is
@@ -291,6 +367,41 @@ plugin installer utility.
 **[Application Server]:** The name of this folder is different depending on
 the bundle you've downloaded. This folder contains the application server in
 which Liferay has been installed.
+
+In addition to Liferay Portal itself, bundles are shipped with a number of
+plugins already installed: 
+
+- [kaleo-web:](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/using-workflow-liferay-portal-6-2-user-guide-11-en) Liferay's workflow engine
+
+- [marketplace:](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/leveraging-the-liferay-marketplace-liferay-portal-6-2-user-guide-14-en) Interface to Liferay Marketplace
+
+- [notifications:](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/touring-liferay-portals-user-interface-liferay-portal-6-2-user-guide-02-en) App that provides in-browser notifications for users
+
+- [opensocial:](https://www.liferay.com/documentation/liferay-portal/6.2/development/-/ai/creating-and-integrating-with-opensocial-liferay-portal-6-2-dev-guide-08-en) Allows deploying OpenSocial gadgets to Liferay Portal
+
+- [resources-importer-web:](https://www.liferay.com/documentation/liferay-portal/6.2/development/-/ai/importing-resources-with-your-themes-liferay-portal-6-2-dev-guide-09-en) Imports theme resources with theme plugins
+
+- [sync-web:](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/liferay-sync-liferay-portal-6-2-user-guide-05-en) Allows Liferay Sync to connect to this installation to keep
+  Documents and Media folders synchronized. You must have this plugin installed
+if you want to use Liferay Sync Mobile or Desktop. 
+
+- web-forms: App that allows users to create forms users can fill out. The
+  results are then emailed to a specified email address. 
+
+- welcome-theme: A default website that gives new users a tour of what Liferay
+  Portal has to offer. 
+
+- [calendar:](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/managing-events-and-calendar-resources-with-liferay-rsquo-s-calendar) Liferay's calendar application. This used to be built-in, and is now
+  a plugin, so it's included by default.
+
+If you are an enterprise subscriber, the welcome theme is not included, and you
+receive a few more plugins: 
+
+- [kaleo-designer-portlet:](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/kaleo-designer-liferay-portal-6-2-user-guide-12-en) Subscriber plugin that offers a graphical interface
+  for creating Kaleo workflows. 
+
+- [kaleo-forms-portlet:](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/make-it-pretty-creating-custom-displays-liferay-portal-6-2-user-guide-10-en) Subscriber plugin that allows attaching forms to
+  workflows. 
 
 Getting a Liferay bundle up and running is as easy as uncompressing the archive,
 copying a JDBC driver, and then starting the application server. Let's use the
@@ -638,7 +749,7 @@ the *Set Profile* dropdown menu.
     "session.disabled" in portal.properties.
     -->
 
-    <!--<Manager className="com.liferay.support.tomcat.session.SessionLessManagerBase" />
+    <!--<Manager className="com.liferay.support.tomcat.session.SessionLessManagerBase" />-->
     </Context>
 
 <!-- Why do we have all that stuff up there commmented out? Wouldn't it be
@@ -775,38 +886,21 @@ Control Lists (PACL) with Liferay on Tomcat.
 
 To enable PACL, you need to enable the security manager and add some required
 permissions to the server policy configuration file. This entails editing
-the `CATALINA_OPTS` variable and editing the `Catalina.policy` file:
+the `CATALINA_OPTS` variable and editing the `catalina.policy` file:
 
 In the *Administration* tab of the Tcat Administration Console, click *Server
 Profiles* and click the profile applied to your Liferay Tcat server. Click the
 *Value* field of the `CATALINA_OPTS` variable created earlier, and add the
 following parameter to it:
 
-    `-Djava.security.manager -Djava.security.policy=$CATALINA_BASE/conf/catalina.policy`
+    `-Djava.security.manager -Djava.security.policy==$CATALINA_BASE/conf/catalina.policy`
 
-Edit `$TCAT_HOME/conf/Catalina.policy` and add the required permissions:
+The double equals sign tells the app server to use this policy file on top of
+any existing security policies. 
 
-        // Tune for specific apps (these are generally required by Liferay plugins not using PACL)
-        grant codeBase "file:${catalina.home}${/}webapps${/}-" {
-            permission java.util.PropertyPermission "base.path", "write";
-            permission java.util.PropertyPermission "*", "read";
-            permission java.lang.reflect.ReflectPermission "suppressAccessChecks";
-        };
-        // represents each webapp's ${javax.servlet.context.tempdir} directory
-        grant codeBase "file:${catalina.home}${/}work${/}Catalina${/}localhost${/}-" {
-            permission java.util.PropertyPermission "base.path", "write";
-            permission java.util.PropertyPermission "*", "read";
-            permission java.lang.reflect.ReflectPermission "suppressAccessChecks";
-        };
+Edit `$TCAT_HOME/conf/catalina.policy` and add the required permissions:
 
-        // Since Liferay portal is a security provider it needs AllPermissions
-        grant codeBase "file:${catalina.home}${/}webapps${/}ROOT${/}-" {
-            permission java.security.AllPermission;
-        };
-        grant codeBase "file:${catalina.home}${/}work${/}Catalina${/}localhost${/}_${/}-" {
-            permission java.security.AllPermission;
-        };
-        grant codeBase "file:${catalina.home}${/}work${/}Catalina${/}localhost${/}ROOT${/}-" {
+        grant {
             permission java.security.AllPermission;
         };
 
@@ -938,8 +1032,7 @@ Edit your `domain1/config/config/server-policy.xml` and append the following
 lines to the end of the file:
 
     grant {
-        permission java.lang.reflect.ReflectPermission  "suppressAccessChecks";
-        permission javax.security.auth.AuthPermission "doAsPrivileged";
+        permission java.security.AllPermission;
     };
 
 Delete, rename, or move the `domain1/docroot/index.html` file to another
@@ -1080,29 +1173,8 @@ following:
 Next, add the required permissions to the server policy configuration file:
 `glassfish/domains/domain1/config/server.policy`. These include the following:
 
-    // Tune for specific apps (these are generally required by Liferay plugins not using PACL)
-    grant codeBase "file:${com.sun.aas.instanceRoot}${/}applications${/}-" {
-            permission java.util.PropertyPermission "base.path", "write";
-            permission java.util.PropertyPermission "*", "read";
-            permission java.lang.reflect.ReflectPermission "suppressAccessChecks";
-    };
-
-    // Represents each webapp's ${javax.servlet.context.tempdir} directory
-    grant codeBase "file:${com.sun.aas.instanceRoot}${/}generated${/}jsp${/}-" {
-            permission java.util.PropertyPermission "base.path", "write";
-            permission java.util.PropertyPermission "*", "read";
-            permission java.lang.reflect.ReflectPermission "suppressAccessChecks";
-    };
-
-    // Since Liferay portal is a security provider it needs AllPermissions
-    grant codeBase "file:${com.sun.aas.instanceRoot}${/}applications${/}liferay-portal${/}-" {
-            permission java.security.AllPermission;
-    };
-    grant codeBase "file:${com.sun.aas.instanceRoot}${/}generated${/}jsp${/}liferay-portal${/}-" {
-            permission java.security.AllPermission;
-    };
-    grant codeBase "file:${com.sun.aas.instanceRoot}${/}lib${/}portal-service.jar" {
-            permission java.security.AllPermission;
+    grant {
+        permission java.security.AllPermission;
     };
 
 Now let's go ahead and deploy Liferay.
@@ -1157,18 +1229,13 @@ Let's work with the dependency jar files first.
    `$JBOSS_HOME/modules/com/liferay/portal/main` folder.
 
 2. Download your database driver `.jar` file and put it into the
-   `$JBOSS_HOME/modules/com/liferay/portal/main` folder as well. For
-   demonstration purposes, we'll download the MySQL Connector/J driver from
+   `$JBOSS_HOME/modules/com/liferay/portal/main` folder as well. To use MySQL,
+   we'll download the MySQL Connector/J driver from
    [http://dev.mysql.com/downloads/connector/j/](http://dev.mysql.com/downloads/connector/j/)
    and put its `.jar` file into the
    `$JBOSS_HOME/modules/com/liferay/portal/main` folder.
 
-3. Download the `jtds-<JTDS_VERSION>.jar.` file and insert it into the
-`$JBOSS_HOME/modules/com/liferay/portal/main` folder. You can download and learn
-more about this JDBC driver at the jTDS home page:
-[http://jtds.sourceforge.net/](http://jtds.sourceforge.net/).
-
-4. Create the file `module.xml` in the
+3. Create the file `module.xml` in the
    `$JBOSS_HOME/modules/com/liferay/portal/main` folder and insert the following
    contents.
 
@@ -1176,9 +1243,7 @@ more about this JDBC driver at the jTDS home page:
 
         <module xmlns="urn:jboss:module:1.0" name="com.liferay.portal">
             <resources>
-                <resource-root path="hsql.jar" />
-                <resource-root path="jtds-1.3.1.jar" />
-                <resource-root path="mysql-connector-java-5.1.26-bin.jar" />
+                <resource-root path="mysql-connector-java-[version]-bin.jar" />
                 <resource-root path="portal-service.jar" />
                 <resource-root path="portlet.jar" />
             </resources>
@@ -1192,15 +1257,15 @@ more about this JDBC driver at the jTDS home page:
             </dependencies>
         </module>
 
-    If you're using a different database or JDBC driver, replace the paths of
-    the MySQL and jTDS resource root entries with the correct paths.
+    Make sure to replace `[version]` with the correct version of the MySQL JDBC
+    driver.
 
-5. Next, you'll need to include a patch from Liferay's source code for one of
+4. Next, you'll need to include a patch from Liferay's source code for one of
 JBoss' default `.jar` files. Once you've downloaded the Liferay source, unzip
 the source into a temporary folder. We'll refer to the location of the Liferay
 source as `$LIFERAY_SOURCE`.
 
-6. Currently, there are bugs in the
+5. Currently, there are bugs in the
 `$JBOSS_HOME/modules/org/jboss/as/server/main/jboss-as-<$JBOSS_VERSION>.Final.jar`
 file regarding the IBM JVM
 ([LPS-39705](http://issues.liferay.com/browse/LPS-39705) and
@@ -1408,7 +1473,7 @@ directory.
                     </paths>
                 </system>
             </dependencies>
-        </module>]]>
+        </module>
 
 3. Navigate to the `$JBOSS_HOME/modules/sun/jdk/main/module.xml` file and insert
 the following path names inside the &lt;paths&gt;...<\/paths> element:
@@ -1729,7 +1794,7 @@ to set up a portal web application:
             "session.disabled" in portal.properties.
             -->
 
-            <!--<Manager className="com.liferay.support.tomcat.session.SessionLessManagerBase" />
+            <!--<Manager className="com.liferay.support.tomcat.session.SessionLessManagerBase" />-->
         </Context>
         
     Setting `crossContext="true"` allows multiple web apps to use the same class
@@ -1881,31 +1946,19 @@ following code into the `CATALINA_OPTS` variable (inside the quotation marks):
 
     `-Djava.security.manager -Djava.security.policy=$CATALINA_BASE/conf/catalina.policy`
 
-- In `$TOMCAT_HOME/conf/Catalina.policy`, add the required permissions:
+- In `$TOMCAT_HOME/conf/catalina.policy`, add the required permissions:
 
-        // Tune for specific apps (these are generally required by Liferay plugins not using PACL)
-        grant codeBase "file:${catalina.home}${/}webapps${/}-" {
-            permission java.util.PropertyPermission "base.path", "write";
-            permission java.util.PropertyPermission "*", "read";
-            permission java.lang.reflect.ReflectPermission "suppressAccessChecks";
-        };
-        // represents each webapp's ${javax.servlet.context.tempdir} directory
-        grant codeBase "file:${catalina.home}${/}work${/}Catalina${/}localhost${/}-" {
-            permission java.util.PropertyPermission "base.path", "write";
-            permission java.util.PropertyPermission "*", "read";
-            permission java.lang.reflect.ReflectPermission "suppressAccessChecks";
+        grant {
+            permission java.security.AllPermission;
         };
 
-        // Since Liferay portal is a security provider it needs AllPermissions
-        grant codeBase "file:${catalina.home}${/}webapps${/}ROOT${/}-" {
-            permission java.security.AllPermission;
-        };
-        grant codeBase "file:${catalina.home}${/}work${/}Catalina${/}localhost${/}_${/}-" {
-            permission java.security.AllPermission;
-        };
-        grant codeBase "file:${catalina.home}${/}work${/}Catalina${/}localhost${/}ROOT${/}-" {
-            permission java.security.AllPermission;
-        };
+To enable the security manager on Tomcat, the server must be started with the
+`-security` commandline options. Shutdown your Tomcat instance and restart it
+with the following command: 
+
+    ./startup.sh -security
+
+Tomcat reports the message `Using Security Manager` to your terminal. 
 
 Now you have PACL enabled and configured for your portal. Let's deploy Liferay!
 
@@ -1927,7 +1980,7 @@ default Tomcat home page. Extract the Liferay `.war` file to
 
 Congratulations on successfully installing and deploying Liferay on Tomcat!
 
-## Installing Liferay on Oracle WebLogic 12c (12.1.x) [](id=install-liferay-on-weblogic-12c-liferay-portal-6-2-user-guide-15-en)
+## Installing Liferay on Oracle WebLogic 12c (12.1.2 and higher) [](id=install-liferay-on-weblogic-12c-liferay-portal-6-2-user-guide-15-en)
 
 In this section, you'll learn how to install Liferay on Oracle WebLogic 12c.
 Since you're using Oracle WebLogic, you may be curious of Liferay's support of
@@ -2149,17 +2202,26 @@ want to protect your portal and your WebLogic server from security threats. To
 do so, you can enable Java Security on your WebLogic server and specify a
 security policy to grant your Liferay Portal access to your server. 
 
-To enable security on your WebLogic server, add the `-Djava.security.manager`
-Java option in your `startWebLogic.[cmd|sh]` file domain's folder. 
-
-For now, in order to grant Liferay access to your server let's open up all
-permissions--you can fine-tune your policy's permissions later. Create a
-policy file named `weblogic.policy` in your `[wlserver]/server/lib` folder and
-add the following contents:
+First, let's grant Liferay access to your server. For now, we'll open up all
+permissions--you can fine-tune your policy's permissions later. Create a policy
+file named `weblogic.policy` in your `$WEBLOGIC_HOME/wlserver/server/lib` folder
+and add the following contents:
 
     grant {
         permission java.security.AllPermission;
     };
+
+To enable security on your WebLogic server and direct the server to your policy
+file, open the `setDomainEnv.[cmd|sh]` file in your domain's folder. Then set
+the `-Djava.security.manager` Java option and set the property
+`-Djava.security.policy==` to the location of your `weblogic.policy` file. You
+can specify both settings on the same line like this:  
+
+    -Djava.security.manager -Djava.security.policy==$WEBLOGIC_HOME/wlserver/ser\
+    ver/lib
+
+The double equals sign tells the app server to use this policy file on top of
+any existing security policies. 
 
 For extensive information on Java SE Security Architecture see its specification
 documents at
@@ -2206,7 +2268,14 @@ configuration process, WebSphere prompts you to Click Save to apply changes to
 Master Configuration. Do so intermittently to save your changes.
 
 **Liferay Home** is in a folder called `liferay` in the home folder of the user
-ID that is running WebSphere.
+ID that is running WebSphere. 
+
+To work correctly on WebSphere 8.5, IBM's PM90932 patch must be installed. You
+can find more information about this patch
+[here](http://www-01.ibm.com/support/docview.wss?uid=swg1PM90932). 
+
+Please also note that the WebSphere Application Liberty Profile is not supported
+by Liferay. 
 
 ### Preparing WebSphere for Liferay [](id=preparing-websphere-for-liferay-liferay-portal-6-2-user-guide-15-en)
 
@@ -2398,7 +2467,7 @@ In the administrative console, go to *Security* $rarr; *Global Security*.  Check
 the box to enable Java 2 security, and click *Apply*. Save to the master
 configuration. 
 
-    ![Figure 15.13: Enabling security can be done by checking one box, but it still needs to be configured. ](../../images/websphere-05-liferay-enable-security.png)
+   ![Figure 15.13: Enabling security can be done by checking one box, but it still needs to be configured. ](../../images/websphere-05-liferay-enable-security.png)
 
 Next, you need to configure security for the Liferay profile you created. This
 requires editing a text file, which can be found nested several folders deep in
@@ -2458,8 +2527,8 @@ There are three sections of the wizard: the portal, the administrator and the
 database. For the portal, you need to supply the following information: 
 
 **Portal Name:** the name of the web site you're powering with Liferay. In this
-book, we build a social network for your nose. This site is called Nosester
-so we've supplied `Nosester` in the screenshot below. 
+book, we build a website for a lunar colony. This site is called Lunar Resort, 
+so we've supplied `Lunar Resort` in the screenshot below. 
 
 **Default Language:** choose the default locale where your site resides. 
 
@@ -2504,7 +2573,7 @@ driver class, and the user credentials (see below). Most of this is filled out
 already; all you should need to do is supply the name of your database and the
 server it's running on, as well as the user credentials. 
 
-![Figure 15.16: Fill out the information for your database. We've chosen MySQL in this example and have created a database called *nosester* to hold our Liferay data.](../../images/setup-wizard-2.png)
+![Figure 15.16: Fill out the information for your database. We've chosen MySQL in this example and have created a database called *lunar_resort* to hold our Liferay data.](../../images/setup-wizard-2.png)
 
 Once you've filled out the form, click *Finish Configuration*. You'll see a
 message stating that Liferay is being installed as it creates the tables and
